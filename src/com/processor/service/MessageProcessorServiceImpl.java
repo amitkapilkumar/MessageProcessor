@@ -77,19 +77,13 @@ public class MessageProcessorServiceImpl implements MessageProcessorService {
 				
 		switch(messageToken.getAction()) {
 			case ADD:
-				for(Sale sale : sales) {
-					sale.setValue(sale.getValue() + messageToken.getAmount());
-				}
+				sales.stream().forEach(sale -> sale.setValue(sale.getValue() + messageToken.getAmount()));
 				break;
 			case SUBTRACT:
-				for(Sale sale : sales) {
-					sale.setValue(sale.getValue() - messageToken.getAmount());
-				}
+				sales.stream().forEach(sale -> sale.setValue(sale.getValue() - messageToken.getAmount()));
 				break;
 			case MULTIPLY:
-				for(Sale sale : sales) {
-					sale.setValue(sale.getValue() * messageToken.getAmount());
-				}
+				sales.stream().forEach(sale -> sale.setValue(sale.getValue() * messageToken.getAmount()));
 				break;
 		}
 	}
